@@ -1,8 +1,9 @@
-export function add(a: number, b: number): number {
-  return a + b;
-}
+export const handler = (_req: Request) =>
+  new Response("Hello from Deno!", {
+    headers: { "content-type": "text/plain" },
+  });
 
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
 if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
+  Deno.serve({ port: 8000 }, handler);
 }
